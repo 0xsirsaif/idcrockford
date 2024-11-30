@@ -1,0 +1,72 @@
+[project]
+name = "idcrockford"
+dynamic = ["version"]
+description = "Crockford Base32 ID generation and validation"
+readme = "README.md"
+authors = [
+    { name = "saif", email = "sirsaif99@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+idcrockford = "idcrockford.__main__:main"
+
+[tool.flit.module]
+name = "idcrockford"
+
+[build-system]
+requires = ["flit_core>=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.ruff]
+line-length = 110
+show-fixes = true
+
+[tool.ruff.lint]
+extend-select = [
+    "F",    # pyflakes
+    "E",    # pycodestyle (PEP 8) E for error
+    "W",    # pycodestyle (PEP 8) W for warning
+    "I",    # flake8-isort
+    "B",    # flake8-bugbear
+    "N",    # PEP8 Naming Conventions
+    "S",    # flake8-bandit for Security checks
+    "T20",  # flake8-print
+    "PT",   # flake8-pytest-style
+    "Q",    # flake8-quotes
+    "TID",  # flake8-tidy-imports
+    "SIM",  # flake8-simplify
+    "DTZ",  # flake8-datetimez
+    "C90",  # flake8-complexity
+]
+extend-ignore = [
+    "B012",
+    "N818",
+    "N999",
+    "TID252",
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+indent-style = "tab"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint.per-file-ignores]
+"*/tests/*" = ["S101"]
+"*/test_*" = ["S101"]
+"*/__main__.py" = ["T20"]
