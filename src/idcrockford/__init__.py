@@ -9,7 +9,7 @@ from typing import Dict, Pattern
 # =============================================================================
 
 CROCKFORD_BASE32_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-CHECK_SYMBOLS = "*~$=U"
+CHECK_SYMBOLS = "*~$U"
 
 ENCODE_MAP = {i: char for i, char in enumerate(CROCKFORD_BASE32_ALPHABET)}
 DECODE_MAP = {char: i for i, char in enumerate(CROCKFORD_BASE32_ALPHABET)}
@@ -26,9 +26,7 @@ NORMALIZE_MAP: Dict[str, str] = {
 }
 
 # Regular expression for valid symbols
-VALID_SYMBOLS_PATTERN: Pattern = re.compile(
-	f"^[{CROCKFORD_BASE32_ALPHABET}]+[{re.escape(CHECK_SYMBOLS)}]?=*$"
-)
+VALID_SYMBOLS_PATTERN: Pattern = re.compile(f"^[{CROCKFORD_BASE32_ALPHABET}]+[{re.escape(CHECK_SYMBOLS)}]?$")
 
 # =============================================================================
 # Utils
